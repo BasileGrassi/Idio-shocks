@@ -34,7 +34,7 @@
 
 
 
-\title{Stand on the shoulders of fat-tailed giants riding cycles.}
+\title{Best Ideas, Idiosyncratic Shocks and Aggregate Fluctuations}
 
 \author{Basile Grassi\\
 \small{\emph{Paris School of Economics and Université Paris 1 Panthéon Sorbonne}}
@@ -46,23 +46,23 @@
 \maketitle
 
 \begin{abstract}
-This small model experiences aggregate fluctuations from idiosyncratic shocks. An endogeneous fat-tailed distribution of firms size arises because of selection of the best ideas \emph{\`a la} Alvarez \emph{et al.} (2008) \nocite{Alva08}. An entrepreneur update its idea only if it improves its technology. This leads to growth and a fat-tailed distribution of firms sizes. From this, idiosyncratic shocks on ability to manage this ideas leads to aggregate fluctuations as in Gabaix (2011) \nocite{Gaba11}.
+This paper derives a model of aggregate fluctuations from idiosyncratic shocks. An endogeneous fat-tailed distribution of firms size arises because of selection of the best ideas \emph{\`a la} Alvarez \emph{et al.} (2008) \nocite{Alva08}. An entrepreneur update its idea only if it improves its technology. This leads to growth and a fat-tailed distribution of firms sizes. From this, idiosyncratic shocks leads to aggregate fluctuations as in Gabaix (2011) \nocite{Gaba11}.
 \end{abstract}
 
 
 
 \section{Selection of ideas}
 
-Following Alvarez \emph{et al.} (2008) \nocite{Alva08} and Lucas (2009) \nocite{Luca09}, the technology frontier evolves according a differential equation. This differential equation deponds upon the way the flow of ideas is modeled. I will considered two cases.
+Following Alvarez \emph{et al.} (2008) \nocite{Alva08} and Lucas (2009)\nocite{Luca09}, the technology frontier evolves according to a differential equation. This differential equation depends on the way the flow of ideas is modeled.
 
-Let us denote $X$ the cost level (the technology average productivity level will be $1/X$) and $G(x,t)$ the counter cumulative distribution function, i.e.
+Let us denote $X$ the cost level (the average TFP will be $1/X$) and $G(x,t)$ the counter cumulative distribution function, i.e.
 \begin{equation*}
 \mathbb{P}_t\{X \geq x\} = G(x,t)
 \end{equation*}
-We will denote $X$ by idea or by cost level.
+We will call $X$ an idea or a cost level.
 
 \subsection{Poisson arrivals with internal source of ideas}
-Each entrepreneurs at $t$ has inherited cost level and receive a new idea drawn from the current distribution $G(x,t)$ at a Poisson arrrival rate $\alpha$. She keeps the new idea only if it is a better idea that is to say that the new cost is lower the current one.
+An entrepreneur at $t$  inherits cost level and receives a new idea drawn from the current distribution $G(x,t)$ at a Poisson arrrival rate $\alpha$. She keeps the new idea only if it is a better idea that is to say that the new cost is lower the current one.
 
 For fixed $x$, I follow Alvarez \emph{et al.} (2008) \nocite{Alva08} to motivate  an ordinary differential equation:
 
@@ -77,7 +77,7 @@ Then
 &+ \mathbb{P} \{ \text{more than on idea } > x \text{ arrives in } \text{ in }  (t,t+h) \} \\
 &= 1 - \alpha h + \alpha h G(x,t) + o(h)
 \end{align*}
-which yields after some computation (rearranging and dividing through by $h$, and letting $ h \rightarrow 0$):
+which yields after some computations (rearranging and dividing through by $h$, and letting $ h \rightarrow 0$):
 \begin{equation*}
 \dpp{\log(G(x,t))}{t}= - \alpha [ 1-G(x,t) ] 
 \end{equation*}
@@ -115,18 +115,18 @@ Thus the distribution of cost $X$ is characterized by the counter cumulative dis
 
 
 
-\subsection{Poisson arrivals with external source of ideas and growth in the arrival rate}
+%\subsection{Poisson arrivals with external source of ideas and growth in the arrival rate}
 
-Leads to an asymptotic exponential distribution with parameter $-\beta H'(0)$ of $G(x,t)$. 
+%Leads to an asymptotic exponential distribution with parameter $-\beta H'(0)$ of $G(x,t)$. 
 
-\section{A simple model of aggregate fluctuation from idiosyncratic shock}
+\section{A simple model of aggregate fluctuations from idiosyncratic shocks}
 
 \subsection{Environment}
-This economy is populated by $N$ entrepreneurs who draw a ideas $\varphi$ from the stationnary distribution of ideas characterized by $g(.)$, they keep this ideas during the two periods of this economy.
+This economy is populated by $N$ entrepreneurs who draw ideas $\varphi$ from the stationary distribution of ideas characterized by $g(.)$, they keep this ideas during the two periods of this economy.
 
-Their are endowned with a tehcnology from which they produce $z n^{\alpha} $ unit of final good with $n$ unit of input at cost $w$ per unit. The TFP term $z$ is at the first period $z_1=\varphi^{1-\alpha}$ and at the second period $z_2 = f(\varphi, x)^{1-\alpha}$ where $x$ is drawn from a given distribution characterized by a probability distribution $h(.)$\footnote{$x$ could be interpreted as the ability of a given entrepreneur to manage the ideas $y$. Here we suppose that the draw of $y$ and the draw of $x$ are independant.} and $f(.,.)$ will be defined later.
+They are endowned with a technology from which they produce $z n^{\alpha} $ units of final good with $n$ units of input at cost $w$ per unit of final output. The TFP term $z$ is at the first period $z_1=\varphi^{1-\alpha}$ and at the second period $z_2 = f(\varphi, x)^{1-\alpha}$ where $x$ is drawn from a given distribution characterized by a probability distribution $h(.)$\footnote{$x$ could be interpreted as the relative growth of its ideas compare to the balanced growth of each ideas. Here we suppose that the draw of $y$ and the draw of $x$ are independant.} and $f(.,.)$ will be defined later\footnote{The hypothesis that $z_1=\varphi^{1-\alpha}$ and $z_2 = f(\varphi, x)^{1-\alpha}$ is critical. Because this hypothesis leads to a one to one mapping between the tail parameter of the size distribution of firms and the one of the productivity distribution. Whitout this hypothesis the tail parameter will be $\frac{1}{1-\alpha} \approx 3$ which implies a thin tail distribution of firms size.}.
 
-For a given productivity level $z$, each entrepreneur maximize its profit. Thus the program of the entrepreneur is:
+For a given productivity level $z$, each entrepreneur maximizes its profit. Thus the program of the entrepreneur is:
 \begin{equation*}
 \pi (z,w) = \max_{n\geq 0} \{ z n^{\alpha} - w n\} 
 \end{equation*}
@@ -139,7 +139,7 @@ which leads to
 
 For a given ideas $y$ and a given ability $x$ the output at the first period is $y_1 = \varphi \big( \frac{1}{w} \big)^{\frac{\alpha}{1-\alpha}} \alpha^{\frac{1}{1-\alpha}} (\frac{1}{\alpha}-1)$ and $y_2 = f(\varphi, x) \big( \frac{1}{w} \big)^{\frac{\alpha}{1-\alpha}} \alpha^{\frac{1}{1-\alpha}} (\frac{1}{\alpha}-1)$.
 
-At this point, an entrepreneur $i\in \{1,2,\ldots, N\}$ is characterized by $(\varphi_i,x_i)$ where $\varphi_i$ stand for its idea and $x_i$ the ability of managing this idea in the second period. She produce $y_1^i$ and $y_2^i$ in the first and the second period respectively.
+At this point, an entrepreneur $i\in \{1,2,\ldots, N\}$ is characterized by $(\varphi_i,x_i)$ where $\varphi_i$ stand for the idea and $x_i$ the idiosyncratic shock in the second period. She produces $y_1^i$ and $y_2^i$ in the first and the second period respectively.
 
 \subsection{Aggregate volatility}
 
@@ -150,16 +150,17 @@ The total GDP of this economy is just the sum over the entrepreneurs of each pro
 
 
 The GDP growth is defined by
-\begin{equation*}
+\begin{equation}
+\label{GDP}
 \frac{\Delta Y_{t+1}}{Y_t} = \frac{1}{Y_t} \sum_{i=1}^N  \Delta y^i_{t+1}
-\end{equation*}
+\end{equation}
 
 The absolute growth of a firm own by the entrepreneur $i$ is 
 \begin{equation*}
 \Delta y^i_{t+1}=  \big( \frac{\alpha}{w} \big)^{\frac{\alpha}{1-\alpha}} \Big(  f(\varphi_i,x_i) -\varphi_i \Big)\\
 \end{equation*}
 
-Let us assume that $f(\varphi_i,x_i) = \varphi_i  x_i$
+Let us assume that $f(\varphi_i,x_i) = \varphi_i  x_i$ which yields\footnote{This assumption is also key, since for $f(\varphi_i,x_i) = \varphi_i + x_i$, $\Delta y^i_{t+1}$ will not be proportional to $y^i_{idea}$ and Gabaix' theorem does not applied anymore.}.
 \begin{align*}
 \Delta y^i_{t+1}&=  \Big( \frac{\alpha}{w} \Big)^{\frac{\alpha}{1-\alpha}} \varphi_i ( x_i - 1 )\\
  &= y^i_{idea} ( x_i - 1 )
@@ -174,7 +175,7 @@ from which, I can derive the GDP volatility
 \begin{equation*}
   \sigma_{GDP} = \sqrt{\mathbb{V}ar_t \Big( \frac{\Delta Y_{t+1}}{Y_t} \Big) } = \Big( \sum_{i=1}^N \sigma^2 \Big( \frac{y^i_{idea}}{Y_t} \Big)^2 \Big)^{1/2}
 \end{equation*}
-where $\sigma^2$ is the variance of the ability shock $h(.)$.
+where $\sigma^2$ is the variance of the idiosyncratic shock $h(.)$.
 
 Let us compute the distribution from which $y^i_{idea}$ are drawn.
 \begin{align*}
@@ -185,8 +186,22 @@ Let us compute the distribution from which $y^i_{idea}$ are drawn.
 \end{align*}
 this distribution does not have a variance.
 
-From this one can apply Proposition 2 from Gabaix (2011)  \nocite{Gaba11} and conclude that $\sigma_{GDP} \sim \frac{v}{\ln N}\sigma$, where $v$ is a random variable followinf a distribution which does not depend on $N$ or $\sigma$\footnote{$v$ follow the square root of a stable l\'evy distribution with exponent $1/2$.}.
+From this one can apply Proposition 2 from Gabaix (2011)  \nocite{Gaba11} and conclude that $\sigma_{GDP} \sim \frac{v}{\ln N}\sigma$, where $v$ is a random variable following a distribution which does not depend on $N$ or $\sigma$\footnote{$v$ follow the square root of a stable l\'evy distribution with exponent $1/2$.}.
 
+\subsection{Simulation}
+
+I assume that the idiosyncratic shock $x$ is equal to $\exp(s)$ where $s$ follow a normal distribution with mean 0 and variance $\sigma^2$. The parameters value are $\phi=2, \alpha=0.6, w=0.3$ and $\sigma=0.01$. To compute figure \ref{Emp_std}, for each number of firms $N$, I draw $M=1000$ economies. Each economy is characterized by a sequence $\{ (\varphi_i,x_i)\}_{1 \ldots N}$. For each economy, I compute the GDP growth using equation (\ref{GDP}), and the empirical standard deviation over this $M$ economies.
+
+To see if the theoretical result of the previous section holds, I regress the corresponding empirical standard deviation on a constant and $1/\log(N)$.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{simulation.eps} 
+\end{center}
+\caption{Empirical standard deviation as a function of $N$ (blue) and a fit to $1/\log(N)$ (red).\label{Emp_std}}
+\end{figure}
+
+\clearpage
 
 \bibliographystyle{plain}
 \bibliography{bibliotheque.bib}
