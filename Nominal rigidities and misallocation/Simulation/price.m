@@ -12,7 +12,7 @@ sigma=0.01;
 
 
 %% Grid
-phi=[0.1:0.1:3];
+phi=[0.1:0.05:3];
 x=[0.9:0.01:1.1];
 % 
 % phi=;
@@ -44,7 +44,9 @@ xi=0.1;
 ptar=w./(rho.*phiphi); %target price
 phix=phiphi.*xx; %product of phi and x
 
-etaprim = @(p) xi*sig*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2) ; %Quadratique cost
+%etaprim = @(p) xi*sig*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig);            %Quadratique cost * quantity produce
+%etaprim = @(p) xi*2* (p./ptar-1).*1./ptar;                                             %Quadratique cost
+etaprim = @(p) xi./(phix).*sig.*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig);  %Quadratique cost * quantity produce /pdty
 
 fun = @(p) 1/rho * w ./ phix - etaprim(p)/(sig-1).* p.^(1+sig)-p; %price rule
 
@@ -65,6 +67,7 @@ plot(phi,p(1,:),'b')
 plot(phi,p(21,:),'r')
 legend('No shock','bad shock','good shock')
 xlabel('phi')
+title('Price set')
 
 figure(2);
 plot(phi,devia(11,:),'k')
@@ -73,7 +76,19 @@ plot(phi,devia(1,:),'b')
 plot(phi,devia(21,:),'r')
 legend('zero','bad shock','good shock')
 xlabel('phi')
+title('Deviasion from flexible price (p-w/(rho*phi*x))')
 
-figure(3)
+figure(3);
+plot(phi,abs(devia(11,:)),'k')
+hold on;
+plot(phi,abs(devia(1,:)),'b')
+plot(phi,abs(devia(21,:)),'r')
+legend('zero','bad shock','good shock')
+xlabel('phi')
+title('Deviasion from flexible price (p-w/(rho*phi*x))')
+
+
+figure(4)
 plot(phi,abs(devia(16:21,:)))
 xlabel('phi')
+title('Deviasion from flexible price |p-w/(rho*phi*x)| for different shock levels')
