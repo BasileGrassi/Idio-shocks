@@ -1,15 +1,8 @@
 clear all
 close all
-N=10;
 
-varphi = 2;
-sigma=0.01;
-%phi =gprnd(1,varphi,0,N,1);
-%phi=sort(phi);
-%phi =[ 0.0560 0.1440 0.5907 0.8725 1.1852 1.7711 1.8066 8.4151 12.4015 19.3174];
-%x = exp(sigma*randn(N,1));
-%x=  [0.9897 1.0134 0.9958 0.9986 1.0090 0.9970 1.0103 0.9966 1.0102 1.0063];
 
+print_price = 'yes'; % 'yes/no' If you want to plto the figure regarding price
 
 %% Grid
 phi=[0.1:0.05:3];
@@ -38,6 +31,7 @@ sig=6;
 rho=(sig-1)/sig;
 w=1;
 xi=0.1;
+f=2;
 
 %% Defined the function
 
@@ -46,8 +40,10 @@ phix=phiphi.*xx; %product of phi and x
 
 %etaprim = @(p) xi*sig*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig);            %Quadratique cost * quantity produce
 %etaprim = @(p) xi*2* (p./ptar-1).*1./ptar;                                             %Quadratique cost
-etaprim = @(p) xi./(phix).*sig.*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig);  %Quadratique cost * quantity produce /pdty
+etaprim = @(p) xi./(phix).*sig.*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig); %Quadratique cost * quantity produce /pdty
 
+
+%FOC
 fun = @(p) 1/rho * w ./ phix - etaprim(p)/(sig-1).* p.^(1+sig)-p; %price rule
 
 %% Solver Parameters
@@ -57,14 +53,16 @@ options=optimset('Display','Iter');
 p=fsolve(fun,pinit,options);
 devia = (p - 1/rho * w ./ phix);
 
-p=reshape(p,nx,nphi);
+p_vec=reshape(p,nx,nphi);
 devia=reshape(devia,nx,nphi);
 
+switch print_price
+    case 'yes'
 figure(1);
-plot(phi,p(11,:),'k')
+plot(phi,p_vec(11,:),'k')
 hold on;
-plot(phi,p(1,:),'b')
-plot(phi,p(21,:),'r')
+plot(phi,p_vec(1,:),'b')
+plot(phi,p_vec(21,:),'r')
 legend('No shock','bad shock','good shock')
 xlabel('phi')
 title('Price set')
@@ -87,8 +85,37 @@ legend('zero','bad shock','good shock')
 xlabel('phi')
 title('Deviasion from flexible price (p-w/(rho*phi*x))')
 
-
 figure(4)
 plot(phi,abs(devia(16:21,:)))
 xlabel('phi')
 title('Deviasion from flexible price |p-w/(rho*phi*x)| for different shock levels')
+
+    case 'no'
+end;
+
+%% Quantity
+
+Q=1;
+P=2;
+
+q = Q .* (p./P).^(-sig);
+r= p.*q;
+
+%% Profit
+
+eta = @(p) xi./phix .* q .* (p./ptar - 1).^2;
+
+pro= r - w .*(f + q./phix)-eta(p);
+
+pro_vec=reshape(pro,nx,nphi);
+
+figure(5);
+plot(phi,pro_vec(11,:),'k')
+hold on;
+plot(phi,pro_vec(1,:),'b')
+plot(phi,pro_vec(21,:),'r')
+legend('zero shock','bad shock','good shock')
+plot(phi,0.*phi,'k--')
+xlabel('phi')
+xlim([0, 1])
+title('Profit')
