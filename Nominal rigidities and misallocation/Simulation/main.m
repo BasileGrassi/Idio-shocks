@@ -2,16 +2,34 @@
 %% Set up
 
 
+clear all
 close all
 
 addpath('lib');
+
+
+
+%% Grid for x and phi
+
+smin = [0.01 0.9];
+smax = [0.5 1.1];
+
+orders = [20 20];
+
+cdef=fundefn('lin', orders, smin, smax);
+nodes = funnode(cdef);
+grid = gridmake(nodes);
+
+ns = size(grid,1);
+
+
+phi=grid(:,1);
+x=grid(:,2);
 
 %% Parameters
 w=1;
 sig=4;
 rho=(sig-1)/sig;
-
-
 xi_v=[0:0.01:1];
 
 Pxi=zeros(size(xi_v));
@@ -34,22 +52,7 @@ L=1;
 params = [w sig rho xi f fe delta L];
 
 
-%% Grid for x and phi
 
-smin = [0.01 0.9];
-smax = [0.5 1.1];
-
-orders = [20 20];
-
-cdef=fundefn('lin', orders, smin, smax);
-nodes = funnode(cdef);
-grid = gridmake(nodes);
-
-ns = size(grid,1);
-
-
-phi=grid(:,1);
-x=grid(:,2);
 
 %% Distribution of phi and x
 pdfphi = @(phi) gppdf(phi,1,2,0);
@@ -168,22 +171,7 @@ L=1;
 params = [w sig rho xi f fe delta L];
 
 
-%% Grid for x and phi
 
-smin = [0.01 0.9];
-smax = [0.5 1.1];
-
-orders = [20 20];
-
-cdef=fundefn('lin', orders, smin, smax);
-nodes = funnode(cdef);
-grid = gridmake(nodes);
-
-ns = size(grid,1);
-
-
-phi=grid(:,1);
-x=grid(:,2);
 
 %% Distribution of phi and x
 pdfphi = @(phi) gppdf(phi,1,2,0);
@@ -301,22 +289,7 @@ L=1;
 params = [w sig rho xi f fe delta L];
 
 
-%% Grid for x and phi
 
-smin = [0.01 0.9];
-smax = [0.5 1.1];
-
-orders = [20 20];
-
-cdef=fundefn('lin', orders, smin, smax);
-nodes = funnode(cdef);
-grid = gridmake(nodes);
-
-ns = size(grid,1);
-
-
-phi=grid(:,1);
-x=grid(:,2);
 
 %% Distribution of phi and x
 pdfphi = @(phi) gppdf(phi,1,2,0);
