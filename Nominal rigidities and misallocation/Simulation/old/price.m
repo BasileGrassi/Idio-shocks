@@ -39,7 +39,7 @@ ptar=w./(rho.*phiphi); %target price
 phix=phiphi.*xx; %product of phi and x
 
 %etaprim = @(p) xi*sig*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig);            %Quadratique cost * quantity produce
-%etaprim = @(p) xi*2* (p./ptar-1).*1./ptar;                                             %Quadratique cost
+%etaprim = @(p) xi.*(phix).*sig.*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig); %Quadratique cost * quantity produce *pdty
 etaprim = @(p) xi./(phix).*sig.*(2/sig * (1./ptar-1./p)-(p./ptar-1).^2).*p.^(-1-sig); %Quadratique cost * quantity produce /pdty
 
 
@@ -83,7 +83,7 @@ plot(phi,abs(devia(1,:)),'b')
 plot(phi,abs(devia(21,:)),'r')
 legend('zero','bad shock','good shock')
 xlabel('phi')
-title('Deviasion from flexible price (p-w/(rho*phi*x))')
+title('Deviasion from flexible price |p-w/(rho*phi*x)|')
 
 figure(4)
 plot(phi,abs(devia(16:21,:)))
